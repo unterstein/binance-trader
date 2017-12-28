@@ -15,6 +15,14 @@ If you want to use this, give it a try, maybe modify the source, experiment and 
 
 **This is highly experimental!!**
 
+**You could lose coins!**
+
+**You could lose a lot of coins!**
+
+**You could gain coins!**
+
+**Please observe this bot while operating and give feedback, open a PR, contribute code <3**
+
 ```
 I am not responsible for anything done with this bot. 
 You use it at your own risk. 
