@@ -39,6 +39,10 @@ You assume all responsibility and liability.
 
 **I am not responsible for any money you lose!**
 
+Please be aware, this bot follows a simple approach to gain profit and this code base don`t have a good test coverage.
+Actually the code base has no coverage at all.
+It is nice to play with and maybe a starting point for more smarter bots.
+
 
 # How it works
 ![How it works](howitworks.jpg)
@@ -120,3 +124,7 @@ mvn spring-boot:run -DAPI_KEY=$YOUR_API_KEY -DAPI_SECRET=$YOUR_API_SECRET
 
 You should see an output like shown in the picture below:
 ![Output](output.png)
+
+
+# Feedback
+Please give feedback and report your experience :)
