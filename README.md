@@ -49,6 +49,7 @@ If this bot made you money in any way, I appreciate a donation:
 - $XVG: DLkVi2HZeVQ5r5fXYG1ieXATxzFZTSyynJ
 - $TRX: 0x3a3a32de226a34f8ab5c1eba66a81fb00b03d187
 - $BCH: lol no
+- ^ lol, love this joke :-)
 
 This bot is offered free of charge with no guarantees whatsoever.
 
