@@ -42,7 +42,7 @@ public class BinanceTrader {
       double profitablePrice = buyPrice + (buyPrice * tradeProfit / 100);
       double price = client.lastPrice();
 
-      logger.info(String.format("buyPrice:%.8f sellPrice:%.8f-bid:%.8f ask:%.8f price:%.8f profit:%.8f diff:%.8f\n", buyPrice, sellPrice, lastAsk, lastAsk, price, profitablePrice, (lastAsk - profitablePrice)));
+      logger.info(String.format("buyPrice:%.8f sellPrice:%.8f bid:%.8f ask:%.8f price:%.8f profit:%.8f diff:%.8f\n", buyPrice, sellPrice, lastAsk, lastAsk, price, profitablePrice, (lastAsk - profitablePrice)));
 
       if (orderId == null) {
         logger.info("nothing bought, let`s check");
