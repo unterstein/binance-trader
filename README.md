@@ -10,6 +10,7 @@ this in a strong typed language and added more fault tolerance.
 
 I don't hold a lot of coins in any currency, so please don't try to hack me and enjoy this bot <3
 
+
 # DISCLAIMER - you probably don't want to use this!
 Probably there are way smarter bots out there, probably more than a hundred or thousand. I just can`t find smart ones open source ;-).
 
@@ -33,6 +34,7 @@ You assume all responsibility and liability.
 ```
 
 **I am not responsible for any money you lose!**
+
 
 # How it works
 ![How it works](howitworks.jpg)
@@ -63,6 +65,7 @@ If this bot made you money in any way, I appreciate a donation:
 
 This bot is offered free of charge with no guarantees whatsoever.
 
+
 # Prerequisites
 
 1. You need a highly volatile crypto currency, for example XVG or TRX (I use XVG) - **you should not hold coins of this currency**
@@ -70,7 +73,6 @@ This bot is offered free of charge with no guarantees whatsoever.
 3. You need to understand that you are responsible for any trades this bot is going to execute!
 4. You need to [create an API key](https://www.binance.com/userCenter/createApi.html) for binance.com
 5. You need to clone this repo and run the code **OR** just use docker
-
 
 
 # Configuration
@@ -82,6 +84,8 @@ TRADE_AMOUNT - the trading amount per action - 150 default
 BASE_CURRENCY - the base currency for all trades - ETH default
 TRADE_CURRENCY - the trading currency for all trades - XVG default
 ```
+
+
 # Run in docker
 You have docker installed? Awesome! Just run the following command:
 
@@ -95,6 +99,7 @@ docker run -ti \
 -e TRADE_CURRENCY='XVG' \
 unterstein/binance-trader
 ```
+
 
 # Run and compile source code
 You need to have java and maven installed on your box. Run the following commands in your workspace directory:
@@ -111,6 +116,3 @@ mvn spring-boot:run -DAPI_KEY=$YOUR_API_KEY -DAPI_SECRET=$YOUR_API_SECRET
 
 You should see an output like shown in the picture below:
 ![Output](output.png)
-
-# Hint for all the hard XVG hodlers
-M
