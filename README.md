@@ -8,6 +8,8 @@ This is an experimental bot for auto trading on the [binance.com](https://binanc
 This implementation was inspired by a [python trading bot](https://github.com/yasinkuyu/binance-trader), but I re-wrote
 this in a strong typed language and added more fault tolerance.
 
+I don't hold a lot of coins in any currency, so please don't try to hack me and enjoy this bot <3
+
 # DISCLAIMER - you probably don't want to use this!
 Probably there are way smarter bots out there, probably more than a hundred or thousand. I just can`t find smart ones open source ;-).
 
