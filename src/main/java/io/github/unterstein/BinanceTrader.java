@@ -36,7 +36,8 @@ public class BinanceTrader {
     try {
       OrderBook orderBook = client.getOrderBook();
       double lastPrice = client.lastPrice();
-      double tradingBalance = client.getAllTradingBalance();
+      AssetBalance tradingBalance = client.getTradingBalance();
+      double lastKnownTradingBalance = client.getAllTradingBalance();
       double lastBid = Double.valueOf(orderBook.getBids().get(0).getPrice());
       double lastAsk = Double.valueOf(orderBook.getAsks().get(0).getPrice());
       double buyPrice = lastBid + tradeDifference;
@@ -70,7 +71,6 @@ public class BinanceTrader {
         OrderStatus status = order.getStatus();
         if (status != OrderStatus.CANCELED) {
           // not new and not canceled, check for profit
-          AssetBalance tradingBalance = client.getTradingBalance();
           logger.info("Tradingbalance: " + tradingBalance);
           if ("0".equals("" + tradingBalance.getLocked().charAt(0)) &&
               lastAsk >= currentlyBoughtPrice) {
@@ -100,7 +100,7 @@ public class BinanceTrader {
                 // WTF?!
                 logger.error("DETECTED WTF!!!!!");
                 logger.error("Order: " + order);
-                client.panicSell(tradingBalance, lastPrice);
+                client.panicSell(lastKnownTradingBalance, lastPrice);
                 clear();
               }
             }
@@ -108,7 +108,7 @@ public class BinanceTrader {
             panicSellCounter++;
             logger.info(String.format("sell request not successful, increasing time %d\n", panicSellCounter));
             if (panicSellCounter > 3) {
-              client.panicSell(tradingBalance, lastPrice);
+              client.panicSell(lastKnownTradingBalance, lastPrice);
               clear();
             }
           }

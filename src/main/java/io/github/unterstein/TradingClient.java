@@ -48,9 +48,13 @@ public class TradingClient {
     return client.getAccount().getAssetBalance(tradeCurrency);
   }
 
+  public double assetBalanceToDouble(AssetBalance balance) {
+    return Double.valueOf(balance.getFree()) + Double.valueOf(balance.getLocked());
+  }
+
   public double getAllTradingBalance() {
     AssetBalance tradingBalance = getTradingBalance();
-    return Double.valueOf(tradingBalance.getFree()) + Double.valueOf(tradingBalance.getLocked());
+    return assetBalanceToDouble(tradingBalance);
   }
 
   public List<AssetBalance> getBalances() {
