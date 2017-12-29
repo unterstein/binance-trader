@@ -87,8 +87,13 @@ public class BinanceTrader {
               } else if (status == OrderStatus.PARTIALLY_FILLED) {
                 logger.info("partially filled - hodl");
               } else if (status == OrderStatus.FILLED) {
-                logger.info("Order filled, let`s sell!");
-                client.sell(tradeAmount, sellPrice);
+                logger.info("Order filled");
+                if (lastAsk >= profitablePrice) {
+                  logger.info("still gaining profitable profits HODL!!");
+                } else {
+                  logger.info("Not gaining enough profit anymore, let`s sell");
+                  client.sell(tradeAmount, sellPrice);
+                }
               } else {
                 // WTF?!
                 logger.error("DETECTED WTF!!!!!");
