@@ -53,7 +53,7 @@ Basically this bot tries to capture bursts and buys in, if a configurable amount
 The bot will check every 3 seconds to the order books of binance and compare `asks` and `bids` and will sell the just bought
 amount if no more gain is detected. If something unexpected happens, the bot tries to sell everything.
 
-**Please don`t use this bot if you are holding coins in the trading currency, because the bot will sell all coins after unexpected events**
+**Please don`t use this bot if you are holding coins in the trading currency, because the bot will sell all coins after unexpected events!**
 
 If you choose a highly fluctuating currency, you have a high chance to hit a maybe a dozen of those bursts per hour. Sometimes it works quite good, sometimes not :)
 
