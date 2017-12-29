@@ -35,21 +35,23 @@ public class BinanceTrader {
   void tick() {
     try {
       OrderBook orderBook = client.getOrderBook();
+      double lastPrice = client.lastPrice();
+      double tradingBalance = client.getAllTradingBalance();
       double lastBid = Double.valueOf(orderBook.getBids().get(0).getPrice());
       double lastAsk = Double.valueOf(orderBook.getAsks().get(0).getPrice());
       double buyPrice = lastBid + tradeDifference;
       double sellPrice = lastAsk - tradeDifference;
       double profitablePrice = buyPrice + (buyPrice * tradeProfit / 100);
-      double price = client.lastPrice();
 
-      logger.info(String.format("buyPrice:%.8f sellPrice:%.8f bid:%.8f ask:%.8f price:%.8f profit:%.8f diff:%.8f\n", buyPrice, sellPrice, lastAsk, lastAsk, price, profitablePrice, (lastAsk - profitablePrice)));
+
+      logger.info(String.format("buyPrice:%.8f sellPrice:%.8f bid:%.8f ask:%.8f price:%.8f profit:%.8f diff:%.8f\n", buyPrice, sellPrice, lastAsk, lastAsk, lastPrice, profitablePrice, (lastAsk - profitablePrice)));
 
       if (orderId == null) {
         logger.info("nothing bought, let`s check");
         // find a burst to buy
         // but make sure price is ascending!
         if (lastAsk >= profitablePrice) {
-          if (price > trackingLastPrice) {
+          if (lastPrice > trackingLastPrice) {
             logger.info("Buy detected");
             currentlyBoughtPrice = profitablePrice;
             orderId = client.buy(tradeAmount, buyPrice).getOrderId();
@@ -62,7 +64,7 @@ public class BinanceTrader {
           logger.info(String.format("No profit detected, difference %.8f\n", lastAsk - profitablePrice));
           currentlyBoughtPrice = null;
         }
-        trackingLastPrice = price;
+        trackingLastPrice = lastPrice;
       } else {
         Order order = client.getOrder(orderId);
         OrderStatus status = order.getStatus();
@@ -98,7 +100,7 @@ public class BinanceTrader {
                 // WTF?!
                 logger.error("DETECTED WTF!!!!!");
                 logger.error("Order: " + order);
-                client.panicSell();
+                client.panicSell(tradingBalance, lastPrice);
                 clear();
               }
             }
@@ -106,7 +108,7 @@ public class BinanceTrader {
             panicSellCounter++;
             logger.info(String.format("sell request not successful, increasing time %d\n", panicSellCounter));
             if (panicSellCounter > 3) {
-              client.panicSell();
+              client.panicSell(tradingBalance, lastPrice);
               clear();
             }
           }

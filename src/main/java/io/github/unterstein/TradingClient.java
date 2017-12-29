@@ -48,6 +48,15 @@ public class TradingClient {
     return client.getAccount().getAssetBalance(tradeCurrency);
   }
 
+  public double getAllTradingBalance() {
+    AssetBalance tradingBalance = getTradingBalance();
+    return Double.valueOf(tradingBalance.getFree()) + Double.valueOf(tradingBalance.getLocked());
+  }
+
+  public List<AssetBalance> getBalances() {
+    return client.getAccount().getBalances();
+  }
+
   public List<Order> getOpenOrders() {
     OrderRequest request = new OrderRequest(symbol);
     return client.getOpenOrders(request);
@@ -96,8 +105,9 @@ public class TradingClient {
     client.cancelOrder(new CancelOrderRequest(symbol, orderId));
   }
 
-  public void panicSell() {
+  public void panicSell(double lastKnownAmount, double lastKnownPrice) {
     logger.error("!!!! PANIC SELL !!!!");
+    logger.warn(String.format("Probably selling %.8f for %.8f", lastKnownAmount, lastKnownPrice));
     cancelAllOrders();
     sellMarket(Double.valueOf(getTradingBalance().getFree()).intValue());
   }
