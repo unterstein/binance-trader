@@ -22,9 +22,7 @@ If you want to use this, give it a try, maybe modify the source, experiment and 
 
 **You could lose a lot of coins!**
 
-**But you could gain coins!**
-
-**¯\\\_(ツ)\_/¯**
+**But you could gain some coins ¯\\\_(ツ)\_/¯**
 
 **Please observe this bot while operating and give feedback, open a PR, contribute code <3**
 
