@@ -56,22 +56,6 @@ amount if no more gain is detected. If something unexpected happens, the bot tri
 If you choose a highly fluctuating currency, you have a high chance to hit a maybe a dozen of those bursts per hour. Sometimes it works quite good, sometimes not :)
 
 
-# Donations
-
-If this bot made you money in any way, I appreciate a donation:
-
-- $BTC: 13sTnjH2CMBVzxiQ41PUenBnKFpjx9emHT
-- $XRP: rEb8TK3gBgk5auZkwc6sHnwrGVJH8DuaLh (tag: 103358538)
-- $LTC: Le7DSYFtvSHRhX5ndxj3jo1oZYEQCzeYkg
-- $ETH: 0x3a3a32de226a34f8ab5c1eba66a81fb00b03d187
-- $XVG: DLkVi2HZeVQ5r5fXYG1ieXATxzFZTSyynJ
-- $TRX: 0x3a3a32de226a34f8ab5c1eba66a81fb00b03d187
-- $BCH: lol no
-- ^ lol, love this joke :-)
-
-This bot is offered free of charge with no guarantees whatsoever.
-
-
 # Prerequisites
 
 1. You need a highly volatile crypto currency, for example XVG or TRX (I use XVG) - **you should not hold coins of this currency**
@@ -126,3 +110,19 @@ You should see an output like shown in the picture below:
 
 # Feedback
 Please give feedback and report your experience :)
+
+
+# Donations
+
+If this bot made you money in any way, I appreciate a donation:
+
+- $BTC: 13sTnjH2CMBVzxiQ41PUenBnKFpjx9emHT
+- $XRP: rEb8TK3gBgk5auZkwc6sHnwrGVJH8DuaLh (tag: 103358538)
+- $LTC: Le7DSYFtvSHRhX5ndxj3jo1oZYEQCzeYkg
+- $ETH: 0x3a3a32de226a34f8ab5c1eba66a81fb00b03d187
+- $XVG: DLkVi2HZeVQ5r5fXYG1ieXATxzFZTSyynJ
+- $TRX: 0x3a3a32de226a34f8ab5c1eba66a81fb00b03d187
+- $BCH: lol no
+- ^ lol, love this joke :-)
+
+This bot is offered free of charge with no guarantees whatsoever.
