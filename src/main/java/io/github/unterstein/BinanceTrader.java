@@ -94,6 +94,7 @@ public class BinanceTrader {
                   logger.info("still gaining profitable profits HODL!!");
                 } else {
                   logger.info("Not gaining enough profit anymore, let`s sell");
+                  logger.info(String.format("Bought %d for %.8f and sell it for %.8f, this is %.8f coins profit", tradeAmount, currentlyBoughtPrice, (1.0 * currentlyBoughtPrice - sellPrice) * tradeAmount));
                   client.sell(tradeAmount, sellPrice);
                 }
               } else {
