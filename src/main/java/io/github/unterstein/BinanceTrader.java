@@ -53,7 +53,7 @@ public class BinanceTrader {
         // but make sure price is ascending!
         if (lastAsk >= profitablePrice) {
           if (lastPrice > trackingLastPrice) {
-            logger.info("Buy detected");
+            logger.info("Buy burst detected");
             currentlyBoughtPrice = profitablePrice;
             orderId = client.buy(tradeAmount, buyPrice).getOrderId();
             panicBuyCounter = 0;
@@ -94,13 +94,13 @@ public class BinanceTrader {
                   logger.info("still gaining profitable profits HODL!!");
                 } else {
                   logger.info("Not gaining enough profit anymore, let`s sell");
-                  logger.info(String.format("Bought %d for %.8f and sell it for %.8f, this is %.8f coins profit", tradeAmount, currentlyBoughtPrice, (1.0 * currentlyBoughtPrice - sellPrice) * tradeAmount));
+                  logger.info(String.format("Bought %d for %.8f and sell it for %.8f, this is %.8f coins profit", tradeAmount, currentlyBoughtPrice, sellPrice, (1.0 * currentlyBoughtPrice - sellPrice) * tradeAmount));
                   client.sell(tradeAmount, sellPrice);
                 }
               } else {
                 // WTF?!
                 logger.error("DETECTED WTF!!!!!");
-                logger.error("Order: " + order);
+                logger.error("Order: " + order + " , Order-Status: " + status);
                 client.panicSell(lastKnownTradingBalance, lastPrice);
                 clear();
               }
