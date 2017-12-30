@@ -120,8 +120,6 @@ If this bot made you money in any way, I appreciate a donation:
 - $XRP: rEb8TK3gBgk5auZkwc6sHnwrGVJH8DuaLh (tag: 103358538)
 - $LTC: Le7DSYFtvSHRhX5ndxj3jo1oZYEQCzeYkg
 - $ETH: 0x3a3a32de226a34f8ab5c1eba66a81fb00b03d187
-- $XVG: DLkVi2HZeVQ5r5fXYG1ieXATxzFZTSyynJ
-- $TRX: 0x3a3a32de226a34f8ab5c1eba66a81fb00b03d187
 - $BCH: lol no
 - ^ lol, love this joke :-)
 
