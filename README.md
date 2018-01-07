@@ -104,6 +104,21 @@ cd binance-trader
 mvn spring-boot:run -DAPI_KEY=$YOUR_API_KEY -DAPI_SECRET=$YOUR_API_SECRET
 ```
 
+# Package and run on server
+
+```
+# Run on desktop to package:
+mvn clean package
+scp target scp target/binancebot-0.0.1-SNAPSHOT.jar whateverhost:whateverpath
+
+ssh whateverhost
+# Run on server
+java -jar -DAPI_KEY=$YOUR_API_KEY -DAPI_SECRET=$YOUR_API_SECRET -Dserver.port=$YOUR_HTTP_PORT binancebot-0.0.1-SNAPSHOT.jar
+
+```
+
+
+# Output
 You should see an output like shown in the picture below:
 ![Output](output.png)
 
