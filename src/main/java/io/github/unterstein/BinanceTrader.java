@@ -62,10 +62,12 @@ public class BinanceTrader {
             panicSellCounter = 0;
           } else {
             logger.warn("woooops, price is falling?!? don`t do something!");
+            panicSellForCondition(lastPrice, lastKnownTradingBalance, client.getAllTradingBalance() > 0);
           }
         } else {
           logger.info(String.format("No profit detected, difference %.8f\n", lastAsk - profitablePrice));
           currentlyBoughtPrice = null;
+          panicSellForCondition(lastPrice, lastKnownTradingBalance, client.getAllTradingBalance() > 0);
         }
         trackingLastPrice = lastPrice;
       } else {
@@ -110,10 +112,7 @@ public class BinanceTrader {
           } else {
             panicSellCounter++;
             logger.info(String.format("sell request not successful, increasing time %d\n", panicSellCounter));
-            if (panicSellCounter > 3) {
-              client.panicSell(lastKnownTradingBalance, lastPrice);
-              clear();
-            }
+            panicSellForCondition(lastPrice, lastKnownTradingBalance, panicSellCounter > 3);
           }
         } else {
           logger.warn("Order was canceled, cleaning up.");
@@ -122,6 +121,14 @@ public class BinanceTrader {
       }
     } catch (Exception e) {
       logger.error("Unable to perform ticker", e);
+    }
+  }
+
+  private void panicSellForCondition(double lastPrice, double lastKnownTradingBalance, boolean condition) {
+    if (condition) {
+      logger.info("panicSellForCondition");
+      client.panicSell(lastKnownTradingBalance, lastPrice);
+      clear();
     }
   }
 
