@@ -8,6 +8,8 @@ import com.binance.api.client.domain.market.OrderBook;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+import java.util.List;
+
 public class BinanceTrader {
 
   private static Logger logger = LoggerFactory.getLogger(BinanceTrader.class);
@@ -128,5 +130,9 @@ public class BinanceTrader {
     panicSellCounter = 0;
     orderId = null;
     currentlyBoughtPrice = null;
+  }
+
+  List<AssetBalance> getBalances() {
+    return client.getBalances();
   }
 }
