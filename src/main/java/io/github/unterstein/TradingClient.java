@@ -57,6 +57,10 @@ public class TradingClient {
     return assetBalanceToDouble(tradingBalance);
   }
 
+  public boolean balanceNotNull(AssetBalance balance) {
+    return !"0".equals("" + balance.getLocked().charAt(0)) && !"0".equals("" + balance.getFree().charAt(0));
+  }
+
   public List<AssetBalance> getBalances() {
     return client.getAccount().getBalances();
   }
