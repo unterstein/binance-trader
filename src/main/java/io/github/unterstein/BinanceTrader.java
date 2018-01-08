@@ -62,12 +62,12 @@ public class BinanceTrader {
             panicSellCounter = 0;
           } else {
             logger.warn("woooops, price is falling?!? don`t do something!");
-            panicSellForCondition(lastPrice, lastKnownTradingBalance, client.balanceNotNull(tradingBalance));
+            panicSellForCondition(lastPrice, lastKnownTradingBalance, client.tradingBalanceAvailable(tradingBalance));
           }
         } else {
           logger.info(String.format("No profit detected, difference %.8f\n", lastAsk - profitablePrice));
           currentlyBoughtPrice = null;
-          panicSellForCondition(lastPrice, lastKnownTradingBalance, client.balanceNotNull(tradingBalance));
+          panicSellForCondition(lastPrice, lastKnownTradingBalance, client.tradingBalanceAvailable(tradingBalance));
         }
         trackingLastPrice = lastPrice;
       } else {
