@@ -35,9 +35,10 @@ public class BinanceTrader {
   }
 
   void tick() {
+    double lastPrice = 0;
     try {
       OrderBook orderBook = client.getOrderBook();
-      double lastPrice = client.lastPrice();
+      lastPrice = client.lastPrice();
       AssetBalance tradingBalance = client.getTradingBalance();
       double lastKnownTradingBalance = client.getAllTradingBalance();
       double lastBid = Double.valueOf(orderBook.getBids().get(0).getPrice());
@@ -69,7 +70,6 @@ public class BinanceTrader {
           currentlyBoughtPrice = null;
           panicSellForCondition(lastPrice, lastKnownTradingBalance, client.tradingBalanceAvailable(tradingBalance));
         }
-        trackingLastPrice = lastPrice;
       } else {
         Order order = client.getOrder(orderId);
         OrderStatus status = order.getStatus();
@@ -90,10 +90,8 @@ public class BinanceTrader {
               if ("0".equals("" + tradingBalance.getFree().charAt(0))) {
                 logger.warn("no balance in trading money, clearing out");
                 clear();
-              } else if (status == OrderStatus.PARTIALLY_FILLED) {
-                logger.info("partially filled - hodl");
-              } else if (status == OrderStatus.FILLED) {
-                logger.info("Order filled");
+              } else if (status == OrderStatus.PARTIALLY_FILLED || status == OrderStatus.FILLED) {
+                logger.info("Order filled with status " + status);
                 if (lastAsk >= profitablePrice) {
                   logger.info("still gaining profitable profits HODL!!");
                 } else {
@@ -122,6 +120,7 @@ public class BinanceTrader {
     } catch (Exception e) {
       logger.error("Unable to perform ticker", e);
     }
+    trackingLastPrice = lastPrice;
   }
 
   private void panicSellForCondition(double lastPrice, double lastKnownTradingBalance, boolean condition) {
