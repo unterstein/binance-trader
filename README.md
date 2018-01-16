@@ -62,7 +62,7 @@ If you choose a highly fluctuating currency, you have a high chance to hit a may
 2. You need a more stable crypto currency, for example LTC or ETH (I use ETH)
 3. You need to understand that you are responsible for any trades this bot is going to execute!
 4. You need to [create an API key](https://www.binance.com/userCenter/createApi.html) for binance.com
-5. You need to clone this repo and run the code **OR** just use docker
+5. You need to clone this repo (you need maven and java installed) and run the code **OR** just use docker
 
 
 # Configuration
@@ -95,6 +95,7 @@ unterstein/binance-trader
 You need to have java and maven installed on your box. Run the following commands in your workspace directory:
 
 ```
+# (Optional) Install maven
 git clone git@github.com:binance-exchange/binance-java-api.git
 cd binance-java-api
 mvn clean install
