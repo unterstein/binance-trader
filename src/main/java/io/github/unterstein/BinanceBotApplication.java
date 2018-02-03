@@ -1,4 +1,4 @@
-package io.github.unterstein;
+package io.github.jadibrahim;
 
 import com.binance.api.client.domain.account.AssetBalance;
 import org.slf4j.Logger;
@@ -30,7 +30,7 @@ public class BinanceBotApplication {
   @Value("${TRADE_PROFIT:1.3}")
   private double tradeProfit;
 
-  @Value("${TRADE_AMOUNT:150}")
+  @Value("${TRADE_AMOUNT:150.0}")
   private int tradeAmount;
 
   @Value("${BASE_CURRENCY:ETH}")
@@ -52,7 +52,7 @@ public class BinanceBotApplication {
   }
 
   // tick every 3 seconds
-  @Scheduled(fixedRate = 3000)
+  @Scheduled(fixedRate = 1000)
   public void schedule() {
     trader.tick();
   }
